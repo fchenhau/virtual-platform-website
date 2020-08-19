@@ -1,8 +1,6 @@
 import axios from 'axios';
 import util from "./util";
 import { API_KEY } from '../config/settings';
-import { Actions } from 'react-native-router-flux';
-import { Alert } from 'react-native';
 
 // Add a request interceptor
 export const InitAxiosInterceptor = () => {
@@ -11,7 +9,7 @@ export const InitAxiosInterceptor = () => {
     // Request
     axios.interceptors.request.use(
         async (config) => {
-            const accessToken = await util.getToken();
+            const accessToken = false;
             if (accessToken) {
                 config.headers["Authorization"] = `Bearer ${accessToken}`;
             }
@@ -27,21 +25,7 @@ export const InitAxiosInterceptor = () => {
     // Response
     axios.interceptors.response.use((response) => {
         return response
-    }, function (error) {
-        
-        // Check if error is forbidden (access token invalid)
-        if (error && error.response.status === 403 && !isAuthenticated) {
-            isAuthenticated = true;
-            Actions.GetStarted();
-            Alert.alert(
-                null,
-                'You are required to login again'
-            )
-            util.clearAll();
-
-            throw error
-        }
-
+    }, (error) => {
         throw error
     });
 };

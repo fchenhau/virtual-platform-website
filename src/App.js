@@ -4,7 +4,7 @@ import { Router } from "react-router";
 
 import Routes from "./app/routes";
 import history from "./app/routes/history";
-import reduxStore from './app/lib/reduxStore';
+import reduxStore from './app/lib/redux/reduxStore';
 
 function App() {
   return (

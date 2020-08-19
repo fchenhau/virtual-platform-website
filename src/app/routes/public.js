@@ -1,7 +1,7 @@
 import HomePage from "../views/pages/Home";
 
 const PublicRoutes = [{
-    path: '/home',
+    path: '/',
     label: 'Home Page',
     component: HomePage
 }];
