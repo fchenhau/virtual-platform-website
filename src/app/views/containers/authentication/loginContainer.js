@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from "react-redux";
-import { authenticationTypes, authenticationActions } from "../../../states/authentication";
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from "react-redux"
+import { authenticationTypes, authenticationActions } from "../../../states/authentication"
 
 const LoginContainer = () => {
 
@@ -71,7 +71,7 @@ const LoginContainer = () => {
                     />
                 </div>
 
-                <div class="d-flex justify-content-end align-items-center">
+                <div className="d-flex justify-content-end align-items-center">
                     <a href="">Forgot Password</a>
                 </div>
             </form>
