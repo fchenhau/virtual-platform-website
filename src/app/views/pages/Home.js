@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { exampleTypes, exampleActions } from "../../states/example";
+import { withRouter } from 'react-router-dom'
 
-const Home = () => {
+const Home = ({ history }) => {
 
     const dispatch = useDispatch();
     const resetGetRequest = () => dispatch(exampleActions.resetGetRequest());
@@ -67,4 +68,4 @@ const Home = () => {
     )
 };
 
-export default (Home);
+export default withRouter(Home);
