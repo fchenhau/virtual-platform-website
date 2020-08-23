@@ -1,6 +1,7 @@
 import HomePage from "../views/pages/Home";
 import TestPage from "../views/pages/Test";
 import LoginPage from "../views/pages/Login";
+import ScrollPage from "../views/pages/Scroll";
 
 const PublicRoutes = [{
     path: '/',
@@ -15,6 +16,10 @@ const PublicRoutes = [{
     path: '/login',
     label: 'Login Page',
     component: LoginPage
+}, {
+    path: '/scroll',
+    label: 'Scroll Page',
+    component: ScrollPage
 }];
 
 export default PublicRoutes;

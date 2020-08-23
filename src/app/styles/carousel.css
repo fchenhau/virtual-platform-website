@@ -1,0 +1,24 @@
+
+.slider {
+    overflow-x: hidden;
+}
+
+.slick-slide {
+    opacity: .6;
+}
+
+.slider-content > img:hover {
+    transition: all .2s ease-in-out;
+    box-shadow: 5px 5px #E3E3E3;
+}
+
+.slider-content:focus {
+    border: none;
+    outline: none;
+}
+
+.slick-current {
+    transition: all .2s ease-in-out;
+    transform: scale(1.2);
+    opacity: 1;
+}
