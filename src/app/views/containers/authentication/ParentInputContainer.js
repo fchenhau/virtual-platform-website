@@ -1,8 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { authenticationTypes, authenticationActions } from "../../../states/authentication"
+import ParentInputRowItem from "../../components/authentication/ParentInputRowItem"
 
 const ParentInputContainer = ({ children }) => {
+
+    // Use to determine the number of group input
+    const [rowItemCount, setrowItemCount] = useState(3)
+
+    const addRowItem = () => {
+        let newRowItemCount = rowItemCount + 1;
+        setrowItemCount(newRowItemCount);
+    }
+
+    const deleteRowItem = () => {
+        if (rowItemCount === 1) return;
+
+        let newRowItemCount = rowItemCount - 1;
+        setrowItemCount(newRowItemCount);
+    }
 
     const [parentInput, setParentInput] = useState({
         spouseName: "",
@@ -21,7 +36,7 @@ const ParentInputContainer = ({ children }) => {
     return (
         <div id="parent_input_container" className="border rounded m-5 p-3">
 
-            <form id="parent_input_form" className="mb-5 pb-5">
+            <div id="spouse_input_container" className="mb-2">
                 <div className="mb-3">
                     <input 
                         type="text"
@@ -90,10 +105,34 @@ const ParentInputContainer = ({ children }) => {
                         onChange={handleChange}
                     />
                 </div>
+            </div>
 
-                { children }
+            <div className="d-flex justify-content-end align-items-center mb-2">
+                <span>Add more</span>
+                <button type="button" className="btn btn-primary btn-sm px-2 mx-2"
+                    onClick={addRowItem}>
+                    +
+                </button>
+                <button type="button" className="btn btn-primary btn-sm px-2 mx-2"
+                    onClick={deleteRowItem}>
+                    -
+                </button>
+            </div>
 
-            </form>
+            {
+                rowItemCount > 0
+                &&
+                [...new Array(rowItemCount)].map((item, index) => {
+                    return (
+                        <ParentInputRowItem 
+                            key={index}
+                            index={index} 
+                        />
+                    )
+                })
+            }
+
+            { children }
             
         </div>
     )

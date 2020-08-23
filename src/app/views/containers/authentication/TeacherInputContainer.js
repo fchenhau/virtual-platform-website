@@ -5,28 +5,49 @@ import TeacherInputRowItem from "../../components/authentication/TeacherInputRow
 const TeacherInputContainer = ({ children }) => {
 
     // Use to determine the number of group input
-    const [rowItemNumber, setRowItemNumber] = useState(3)
+    const [rowItemCount, setrowItemCount] = useState(3)
+
+    const addRowItem = () => {
+        let newRowItemCount = rowItemCount + 1;
+        setrowItemCount(newRowItemCount);
+    }
+
+    const deleteRowItem = () => {
+        if (rowItemCount === 1) return;
+
+        let newRowItemCount = rowItemCount - 1;
+        setrowItemCount(newRowItemCount);
+    }
 
     return (
         <div id="teacher_input_container" className="border rounded m-5 p-3">
 
-            <form id="teacher_input_form" className="mb-5 pb-5">
-                {
-                    rowItemNumber > 0
-                    &&
-                    [...new Array(rowItemNumber)].map((item, index) => {
-                        return (
-                            <TeacherInputRowItem 
-                                key={index}
-                                index={index} 
-                            />
-                        )
-                    })
-                }
+            <div className="d-flex justify-content-end align-items-center mb-2">
+                <span>Add more</span>
+                <button type="button" className="btn btn-primary btn-sm px-2 mx-2"
+                    onClick={addRowItem}>
+                    +
+                </button>
+                <button type="button" className="btn btn-primary btn-sm px-2 mx-2"
+                    onClick={deleteRowItem}>
+                    -
+                </button>
+            </div>
 
-                { children }
+            {
+                rowItemCount > 0
+                &&
+                [...new Array(rowItemCount)].map((item, index) => {
+                    return (
+                        <TeacherInputRowItem 
+                            key={index}
+                            index={index} 
+                        />
+                    )
+                })
+            }
 
-            </form>
+            { children }
             
         </div>
     )

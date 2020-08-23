@@ -42,28 +42,16 @@ const RegisterContainer = () => {
         isAgreeToTnc: false,
     })
 
-    const [teacherInput, setTeacherInput] = useState([
-        {
-            name: "",
-            age: "",
-            password: "",
-            confirmPassword: "",
-            email: ""
-        }
-    ])
-
-    const [corporateInput, setCorporateInput] = useState({
-        invitationPasscode: "",
-        areaOfParticipation: "",
-        addressLine1: "",
-        addressLine2: ""
-    })
-
     const handleChange = event => {
         setFormInput({ ...formInput, [event.target.name]: event.target.value });
     }
 
-    const handleRegister = () => {
+    const handleRegister = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        console.log(event.target);
+        console.log(data);
+        console.log(data.get('username'));
         postRegister();
     }
 
@@ -81,7 +69,7 @@ const RegisterContainer = () => {
                         I agree to the <a href="">Terms and Conditions</a>
                     </span>
                 </div>
-                <button type="button" onClick={handleRegister}
+                <button type="submit" 
                     className="btn btn-primary">
                     Register
                 </button>
@@ -120,7 +108,7 @@ const RegisterContainer = () => {
                 Register #mydigitalmaker
             </h3>
 
-            <form id="register_form" className="mb-5 pb-5">
+            <form id="register_form" className="mb-5 pb-5" onSubmit={handleRegister}>
                 <div className="mb-3">
                     <input 
                         type="text"
@@ -275,10 +263,9 @@ const RegisterContainer = () => {
                     />
                 </div>
 
-            </form>
+                {renderBasedOnUserType()}
 
-            {renderBasedOnUserType()}
-            
+            </form>
         </div>
     )
 };
