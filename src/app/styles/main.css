@@ -1,0 +1,28 @@
+.main-page {
+    background-color: #000000;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.main-page .stats {
+    position: absolute;
+    bottom: 3%;
+}
+
+.main-page .logo {
+    position: absolute;
+    left: 30%;
+    top: 35%;
+}
+
+.logo-text {
+    position: absolute;
+    left: 43.2%;
+    top: 53%;
+}
+
+.logo-text .borderline {
+    border-top: 2px solid #ffffff;
+    width: 100%;
+}
