@@ -5,7 +5,7 @@ import "../../../styles/about1.css"
 const About1 = () => {
 
     return (
-        <div className="about-page-1">
+        <div id="about_page_1">
             <div className="about-page-1-text">
                 <h3>RAISING DIGITAL HEROES</h3>
                 <p>
@@ -20,9 +20,8 @@ const About1 = () => {
 
             <div className="d-flex align-items-center h-100">
                 <img src={RaisingDigitalHeroesImage} alt="Raising Digital Heroes" 
-                    className="img img-fluid" width="100%"/>
+                    className="img img-fluid" />
             </div>
-
             
         </div>
     )
