@@ -8,6 +8,7 @@ import Main from "./public/Main"
 import About1 from "./public/About1"
 import About2 from "./public/About2"
 import Highlights from "./public/Highlights"
+import Speakers from "./public/Speakers"
 
 const Index = ({ history }) => {
 
@@ -23,6 +24,10 @@ const Index = ({ history }) => {
 
             <ParallaxLayer offset={1} speed={0}>
                 <About2 />
+            </ParallaxLayer>
+
+            <ParallaxLayer offset={2} speed={0}>
+                <Speakers />
             </ParallaxLayer>
             
             {/* Moving Layers */}
