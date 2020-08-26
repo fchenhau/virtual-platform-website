@@ -1,0 +1,13 @@
+#about_page_1 {
+    background-color: #000000;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.about-page-1-text {
+    width: 45vw;
+    position: absolute;
+    left: 5vw;
+    top: 35vh;
+}
