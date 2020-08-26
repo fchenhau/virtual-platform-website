@@ -2,33 +2,36 @@ import apiAction from "../lib/apiAction"
 
 const Authentication = {
 
-    postLogin: (params = null) => {
+    postLogin: (username, password, eventId = 1) => {
         return new Promise((resolve, reject) => {
             /** Define API Url Path */
-            const url = 'api_url';
+            const url = `/users/login`;
 
-            /** Example API Call */
-            // apiAction.get(url, params)
-            //     .then(response => resolve(response.data.data))
-            //     .catch(err => reject(err.response))
+            const data = {
+                'username': username, 
+                'password': password, 
+                'event_id': eventId
+            }
 
-            // Just for example purpose
-            return 'success';
+            apiAction.post(url, data)
+                .then(response => resolve(response.data.data))
+                .catch(err => reject(err.response))
         })
     },
 
-    postRegister: (params = null) => {
+    postRegister: (users = {}, eventId = 1) => {
         return new Promise((resolve, reject) => {
             /** Define API Url Path */
-            const url = 'api_url';
+            const url = '/users';
 
-            /** Example API Call */
-            // apiAction.post(url, params)
-            //     .then(response => resolve(response.data.data))
-            //     .catch(err => reject(err.response))
+            const data = {
+                'users': users,
+                'event_id': eventId
+            }
 
-            // Just for example purpose
-            return 'success';
+            apiAction.post(url, data)
+                .then(response => resolve(response.data.data))
+                .catch(err => reject(err.response))
         })
     },
 };
