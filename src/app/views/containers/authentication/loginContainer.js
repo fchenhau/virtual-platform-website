@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from "react-redux"
-import { authenticationTypes, authenticationActions } from "../../../states/authentication"
+import Authentication from "../../../apis/authentication"
 
 const LoginContainer = () => {
-
-    const dispatch = useDispatch();
-    const postLogin = () => dispatch(authenticationActions.postLogin());
-    const resetPostLogin = () => dispatch(authenticationActions.resetPostLogin());
-
-    const postLoginResponse = useSelector(({ auth }) => auth.postLoginResponse);
-
-    useEffect(() => {
-        const { type, message } = postLoginResponse;
-        
-        if (type === authenticationTypes.POST_LOGIN_SUCCESS) {
-            resetPostLogin();
-            console.log(message);
-        }
-
-        if (type === authenticationTypes.POST_LOGIN_FAIL) {
-            resetPostLogin();
-            console.log(message);
-        }
-
-    }, [postLoginResponse]);
 
     const [state, setState] = useState({
         username: "",
         password: ""
     })
+
+    const postLogin = () => {
+        Authentication.postLogin(state.username, state.password)
+            .then(response => {
+                const { code: responseCode } = response;
+
+                // if success, return success type
+                if (responseCode === 200) {
+                    const { data } = response;
+                    console.log(data);
+                }
+                
+                // if fail, return fail type
+                if (responseCode !== 200) {
+                    const { errors } = response;
+                    console.log(`PostLogin: ${responseCode} - ${errors}`)
+                }
+            })
+            .catch(error => {
+                console.log(`PostLogin: ${error}`)
+            })
+    }
 
     const handleChange = event => {
         setState({ ...state, [event.target.name]: event.target.value });

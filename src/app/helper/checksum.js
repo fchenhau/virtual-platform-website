@@ -14,10 +14,23 @@ import moment from moment
  * @param {Object} data 
  * @param {Array} subUsernames 
  */
-export const calculateXChecksum = (data = {}, subUsernames = []) => {
-    const { password, username, email } = data;
+export const calculateXChecksum = (mainUser = {}, subUsers = []) => {
+    // Extract the required fields from mainUser
+    const { password, username, email } = mainUser;
+
+    // Extract the required fields from subUsers
+    const subUsernames = subUsers.map((user) => { return user.username });
+    const concatSubUsernames = subUsernames.join('|');
+
+    // Get the required date
     const currentUtcDate = moment().format('yyyy-mm-dd');
     const currentUtcTime = moment().format('hh:mm:ss');
+
+    // Concatenate string 
+    let concatString = password + '|' + username + '|' + email + '|' + currentUtcDate + '|' + currentUtcTime + '|' + concatSubUsernames;
+    const base64Encoded = new Buffer(concatString).toString('base64');
+
+    return base64Encoded;
 }
 
 

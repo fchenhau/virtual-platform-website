@@ -1,32 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from "react-redux"
-import { authenticationTypes, authenticationActions } from "../../../states/authentication"
 import ParentInputContainer from "./ParentInputContainer"
 import TeacherInputContainer from "./TeacherInputContainer"
 import CorporateInputContainer from "./CorporateInputContainer"
+import Authentication from "../../../apis/authentication"
 
 const RegisterContainer = () => {
-
-    const dispatch = useDispatch();
-    const postRegister = () => dispatch(authenticationActions.postRegister());
-    const resetPostRegister = () => dispatch(authenticationActions.resetPostRegister());
-
-    const postRegisterResponse = useSelector(({ auth }) => auth.postRegisterResponse);
-
-    useEffect(() => {
-        const { type, message } = postRegisterResponse;
-        
-        if (type === authenticationTypes.POST_REGISTER_SUCCESS) {
-            resetPostRegister();
-            console.log(message);
-        }
-
-        if (type === authenticationTypes.POST_REGISTER_FAIL) {
-            resetPostRegister();
-            console.log(message);
-        }
-
-    }, [postRegisterResponse]);
 
     const [formInput, setFormInput] = useState({
         fullname: "",
@@ -42,16 +20,57 @@ const RegisterContainer = () => {
         isAgreeToTnc: false,
     })
 
+    const postRegister = () => {
+        // Dummy data
+        const mainUser = {
+            "username": "john_doe",
+            "password": "123456",
+            "email": "john_doe@gmail.com",
+            "gender": 1,
+            "name": "Test User",
+            "phone_no": "0123874984",
+            "dob": "1991-01-19"
+        };
+
+        const subUsers = [
+            {
+                "username": "john_doe2",
+                "password": "123456",
+                "email": "john_doe2@gmail.com",
+                "gender": 1,
+                "name": "Test 002",
+                "phone_no": "0123456789",
+                "dob": "1991-01-19"
+            }
+        ];
+
+        Authentication.postRegister(mainUser, subUsers)
+            .then(response => {
+                const { code: responseCode } = response;
+
+                // if success, return success type
+                if (responseCode === 200) {
+                    const { data } = response;
+                    console.log(data);
+                }
+                
+                // if fail, return fail type
+                if (responseCode !== 200) {
+                    const { errors } = response;
+                    console.log(`PostRegister: ${responseCode} - ${errors}`)
+                }
+            })
+            .catch(error => {
+                console.log(`PostRegister: ${error}`)
+            })
+    }
+
     const handleChange = event => {
         setFormInput({ ...formInput, [event.target.name]: event.target.value });
     }
 
     const handleRegister = (event) => {
         event.preventDefault();
-        const data = new FormData(event.target);
-        console.log(event.target);
-        console.log(data);
-        console.log(data.get('username'));
         postRegister();
     }
 

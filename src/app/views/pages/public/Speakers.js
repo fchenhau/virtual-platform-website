@@ -4,12 +4,9 @@ import "../../../styles/speakers.css"
 import SpeakerItem from "../../components/speakers/SpeakerItem"
 import Events from "../../../apis/events"
 
-import { useDispatch, useSelector } from "react-redux"
-import { eventTypes, eventActions } from "../../../states/events"
-
 const Speakers = () => {
-
-    const dispatch = useDispatch();
+    
+    const [speakerListing, setSpeakerListing] = useState([]);
 
     const getSpeakerListing = () => {
         Events.getSpeakerListing()
@@ -18,47 +15,25 @@ const Speakers = () => {
 
                 // if success, return success type
                 if (responseCode === 200) {
-                    const { data } = response;
-                    
-                    dispatch(eventActions.getSpeakerListingSuccess(data))
+                    const { data: { speakers } } = response;
+
+                    setSpeakerListing(speakers)
                 }
                 
                 // if fail, return fail type
                 if (responseCode !== 200) {
                     const { errors } = response;
-                    dispatch(eventActions.getSpeakerListingFail(errors))
+                    console.log(`GetSpeakerListing: ${responseCode} - ${errors}`)
                 }
-            });
-        
+            })
+            .catch(error => {
+                console.log(`GetSpeakerListing: ${error}`)
+            })
     }
-
-    const resetGetSpeakerListing = () => dispatch(eventActions.resetGetSpeakerListing());
-
-    const getSpeakerListingResponse = useSelector(({ event }) => event.getSpeakerListingResponse);
-
-    const [speakerListing, setSpeakerListing] = useState([]);
 
     useEffect(() => {
         getSpeakerListing();
     }, []);
-
-    useEffect(() => {
-        const { type, message, apiData } = getSpeakerListingResponse;
-        
-        if (type === eventTypes.GET_SPEAKER_LISTING_SUCCESS) {
-            const { speakers } = apiData;
-            
-            resetGetSpeakerListing();
-            setSpeakerListing(speakers);
-            console.log(message);
-        }
-
-        if (type === eventTypes.GET_SPEAKER_LISTING_FAIL) {
-            resetGetSpeakerListing();
-            console.log(message);
-        }
-
-    }, [getSpeakerListingResponse]);
 
     return (
         <div id="speakers">
