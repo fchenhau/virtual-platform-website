@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from "react-redux"
+import React, { useState } from 'react'
 
 const ParentInputRowItem = ({ index }) => {
 
@@ -37,10 +36,9 @@ const ParentInputRowItem = ({ index }) => {
                     type="number"
                     name="age"
                     placeholder="Age"
-                    className="form-control"
+                    className="form-control mx-2"
                     value={input.age}
                     onChange={(event) => handleChange(event, index)}
-                    className="mx-2"
                 />
                 <span>years</span>
             </div>

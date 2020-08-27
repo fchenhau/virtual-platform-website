@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from "react-redux"
+import React, { useState } from 'react'
 import TeacherInputRowItem from "../../components/authentication/TeacherInputRowItem"
 
 const TeacherInputContainer = ({ children }) => {

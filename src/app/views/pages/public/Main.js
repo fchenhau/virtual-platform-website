@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import MainLogo from "../../../assets/images/main_logo.png"
 import "../../../styles/main.css"
 

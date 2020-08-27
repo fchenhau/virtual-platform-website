@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import HighlightImg1 from "../../../assets/images/Highlights/MDM2020_07_03_HIGHLIGHT_14.png"
 import HighlightImg2 from "../../../assets/images/Highlights/MDM2020_07_03_HIGHLIGHT_15.png"
 import HighlightImg3 from "../../../assets/images/Highlights/MDM2020_07_03_HIGHLIGHT_16.png"

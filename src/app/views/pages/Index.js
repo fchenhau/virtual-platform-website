@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from "react-redux";
-import { exampleTypes, exampleActions } from "../../states/example";
 import { withRouter } from 'react-router-dom'
 import {Parallax, ParallaxLayer} from 'react-spring/renderprops-addons'
 
@@ -27,14 +25,19 @@ const Index = ({ history }) => {
                 <About2 />
             </ParallaxLayer>
 
+            {/* <ParallaxLayer offset={3} speed={0}>
+                <Login />
+            </ParallaxLayer> */}
+            
+            <ParallaxLayer offset={3} speed={0}>
+                <Login />
+            </ParallaxLayer>
+
             <ParallaxLayer offset={2} speed={0}>
                 <Speakers />
             </ParallaxLayer>
 
-            <ParallaxLayer offset={3} speed={0}>
-                <Login />
-            </ParallaxLayer>
-            
+
             {/* Moving Layers */}
             <ParallaxLayer offset={0.99} speed={1}>
                 <About1 />

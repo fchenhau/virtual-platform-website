@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import WhoIsThisForImg from "../../../assets/images/about_2.png"
 import "../../../styles/about2.css"
 

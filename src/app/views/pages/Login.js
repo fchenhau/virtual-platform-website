@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import LoginContainer from '../containers/authentication/LoginContainer'
 import RegisterContainer from '../containers/authentication/RegisterContainer'
 

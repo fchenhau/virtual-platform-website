@@ -1,0 +1,14 @@
+#login {
+    background: url('../assets/images/Register/MDM2020_07_05_REGISTER-11.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
