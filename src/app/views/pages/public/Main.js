@@ -29,23 +29,23 @@ const Main = () => {
             <div className="stats w-100">
                 <div className="d-flex justify-content-around align-items-center flex-wrap text-white">
                     <div className="d-flex flex-column justify-content-center align-items-center px-2 mb-2">
-                        <span>>40</span>
+                        <span>{">40"}</span>
                         <span>VIRTUAL EXHIBITORS</span>
                     </div>
                     <div className="d-flex flex-column justify-content-center align-items-center px-2 mb-2">
-                        <span>>30</span>
+                        <span>{">30"}</span>
                         <span>SPEAKERs</span>
                     </div>
                     <div className="d-flex flex-column justify-content-center align-items-center px-2 mb-2">
-                        <span>>30</span>
+                        <span>{">30"}</span>
                         <span>WORKSHOPS & TUTORIALS</span>
                     </div>
                     <div className="d-flex flex-column justify-content-center align-items-center px-2 mb-2">
-                        <span>10</span>
+                        <span>{"10"}</span>
                         <span>COMPETITIONS</span>
                     </div>
                     <div className="d-flex flex-column justify-content-center align-items-center px-2 mb-2">
-                        <span>>3,000</span>
+                        <span>{">3,000"}</span>
                         <span>DIGITAL TECH JOBS</span>
                     </div>
                 </div>

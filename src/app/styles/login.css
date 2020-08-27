@@ -2,13 +2,17 @@
     background: url('../assets/images/Register/MDM2020_07_05_REGISTER-11.png');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background-size: 100% 100%;
 
     position: relative;
     width: 100vw;
+    height: 100vh;
+}
+
+.login-wrapper {
+    /* position: absolute;
+    top: 50%;
+    transform: translate(0, -50%); */
+    width: 50vw;
     height: 100vh;
 }
