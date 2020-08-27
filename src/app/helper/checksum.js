@@ -1,4 +1,5 @@
-import moment from moment
+import moment from "moment"
+import sha256 from "js-sha256"
 
 /**
  * Formula: 
@@ -11,10 +12,11 @@ import moment from moment
         body_users.sub[0].username + '|' +
         body_users.sub[1].username + '|' +
     )
- * @param {Object} data 
+ * @param {Object} mainUser 
  * @param {Array} subUsernames 
  */
 export const calculateXChecksum = (mainUser = {}, subUsers = []) => {
+
     // Extract the required fields from mainUser
     const { password, username, email } = mainUser;
 
@@ -43,11 +45,21 @@ export const calculateXChecksum = (mainUser = {}, subUsers = []) => {
         body.users.main.phone_no + '|' +
         body.users.sub.username + '|' +
     )
- * @param {Object} data 
+ * @param {Object} mainUser 
  * @param {Array} subUsernames 
  */
-export const calculateXSignature = (data = {}, subUsernames = []) => {
-    const { password, username, email } = data;
-    const currentUtcDate = moment().format('yyyy-mm-dd');
-    const currentUtcTime = moment().format('hh:mm:ss');
+export const calculateXSignature = (mainUser = {}, subUsers = []) => {
+ 
+    // Extract the required fields from mainUser
+    const { password, username, email, phoneNumber } = mainUser;
+
+    // Extract the required fields from subUsers
+    const subUsernames = subUsers.map((user) => { return user.username });
+    const concatSubUsernames = subUsernames.join('|');
+
+    // Concatenate string 
+    let concatString = password + '|' + username + '|' + email + '|' + phoneNumber + '|' + concatSubUsernames;
+    const encryptedString = sha256(concatString);
+
+    return encryptedString;
 }

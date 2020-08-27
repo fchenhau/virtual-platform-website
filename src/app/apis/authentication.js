@@ -1,4 +1,5 @@
 import apiAction from "../lib/apiAction"
+import { calculateXChecksum, calculateXSignature } from "../helper/checksum"
 
 const Authentication = {
 
@@ -26,8 +27,8 @@ const Authentication = {
 
             const config = {
                 headers: {
-                    'x-checksum': "MTIzNDU2fGphY2sub29pfGphY2tvb2lAMTIzLmNvbXwyMDIwLTA4LTI0fDEyOjUzOjAwfGphY2sub29pMnxqYWNrLm9vaTM=",
-                    'x-signature': "164651c1d03a2d3a9ee3fdc70471c99fd639b9eb16a8e87188a5643965812a9e",
+                    'x-checksum': calculateXChecksum(mainUser, subUsers),
+                    'x-signature': calculateXSignature(mainUser, subUsers),
                 }
             }
 
