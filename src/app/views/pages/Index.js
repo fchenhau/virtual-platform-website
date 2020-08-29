@@ -9,6 +9,7 @@ import Highlights from "./public/Highlights"
 import Speakers from "./public/Speakers"
 import Login from "./public/Login"
 import Register from "./public/Register"
+import SeeYouSoon from "./public/SeeYouSoon"
 
 const Index = ({ history }) => {
 
@@ -19,7 +20,7 @@ const Index = ({ history }) => {
     }
 
     return (
-        <Parallax pages={8} scrolling={true} horizontal={false} ref={refParallax}>
+        <Parallax pages={6} scrolling={true} horizontal={false} ref={refParallax}>
 
             {/* Static Layers */}
             <ParallaxLayer offset={0} speed={0}>
@@ -28,6 +29,10 @@ const Index = ({ history }) => {
 
             <ParallaxLayer offset={1} speed={0}>
                 <About2 />
+            </ParallaxLayer>
+
+            <ParallaxLayer offset={5} speed={0}>
+                <SeeYouSoon />
             </ParallaxLayer>
 
             <ParallaxLayer offset={4} speed={0}>
