@@ -30,11 +30,7 @@ const Index = ({ history }) => {
             <ParallaxLayer offset={1} speed={0}>
                 <About2 />
             </ParallaxLayer>
-
-            <ParallaxLayer offset={5} speed={0}>
-                <SeeYouSoon />
-            </ParallaxLayer>
-
+            
             <ParallaxLayer offset={4} speed={0}>
                 <Register />
             </ParallaxLayer>
