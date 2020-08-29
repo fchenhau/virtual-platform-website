@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ParentInputContainer from "./ParentInputContainer"
 import TeacherInputContainer from "./TeacherInputContainer"
-import CorporateInputContainer from "./CorporateInputContainer"
+import CustomInput from "../../components/authentication/CustomInput"
 import Authentication from "../../../apis/authentication"
 
 const RegisterContainer = () => {
@@ -113,21 +113,29 @@ const RegisterContainer = () => {
     }
 
     return (
-        <div id="register_container" className="border rounded m-5 p-3">
-            <h3 className="mb-4">
-                Register #mydigitalmaker
-            </h3>
+        <div id="register_container" className="border rounded m-5 p-3 bg-light">
+            <div id="title" className="d-flex align-items-center">
+                <div>
+                    REGISTRATION 
+                </div>
+                <div className="border-vertical mx-2" />
+                <div>
+                    #MYDIGITALMAKERFAIR
+                </div>
+            </div>
+            
 
             <form id="register_form" className="mb-5 pb-5" onSubmit={handleRegister}>
                 <div className="mb-3">
-                    <input 
+                    <CustomInput
                         type="text"
                         name="fullname"
                         placeholder="Full Name"
-                        className="form-control"
                         value={formInput.fullname}
+                        required
                         onChange={handleChange}
                     />
+
                 </div>
 
                 <div className="mb-3">

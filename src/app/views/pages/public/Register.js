@@ -6,7 +6,9 @@ const Register = () => {
 
     return (
         <div id="register">
-            <RegisterContainer />
+            <div className="register-wrapper">
+                <RegisterContainer />
+            </div>
         </div>
     )
 };

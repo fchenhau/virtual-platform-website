@@ -19,7 +19,7 @@ const Index = ({ history }) => {
     }
 
     return (
-        <Parallax pages={5} scrolling={true} horizontal={false} ref={refParallax}>
+        <Parallax pages={8} scrolling={true} horizontal={false} ref={refParallax}>
 
             {/* Static Layers */}
             <ParallaxLayer offset={0} speed={0}>

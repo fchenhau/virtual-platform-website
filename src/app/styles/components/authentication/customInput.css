@@ -1,0 +1,36 @@
+
+.input-container {
+    width: 100%;
+    position: relative;
+}
+
+.icon-container {
+    position: absolute;
+    right: 3px;
+    top: 0;
+    z-index: 3;
+}
+
+.icon {
+    color: blue;
+    width: 0.6rem !important;
+    height: 0.6rem !important;
+}
+  
+.input-field {
+    position: relative;
+    width: 100%;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 30px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid grey;
+    background-color: transparent;
+}
+  
+.input-field:focus {
+    background-color: white;
+    outline: none;
+}
+  
