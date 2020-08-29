@@ -2,8 +2,12 @@ import React from 'react'
 import "../../../styles/seeYouSoon.css"
 import BtnConfirm from "../../../assets/images/Register/btn_confirm.png"
 import { withRouter } from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
 
 const SeeYouSoon = ({ history }) => {
+
+    const email = useSelector(({auth}) => auth.email)
+    const password = useSelector(({auth}) => auth.password)
 
     return (
         <div id="see_you_soon">
@@ -20,12 +24,12 @@ const SeeYouSoon = ({ history }) => {
                                 <tr>
                                     <th>Email Address</th>
                                     <td className="px-2">:</td>
-                                    <td className="w-75 bg-white">-</td>
+                                    <td className="w-75 bg-white">{email || '-'}</td>
                                 </tr>
                                 <tr>
                                     <th>Password</th>
                                     <td className="px-2">:</td>
-                                    <td className="w-75 bg-white">-</td>
+                                    <td className="w-75 bg-white">{password || '-'}</td>
                                 </tr>
                             </tbody>
                         </table>

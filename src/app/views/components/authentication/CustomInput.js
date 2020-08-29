@@ -7,7 +7,7 @@ const CustomInput = ({ type, name, placeholder, value, required, onChange }) => 
 
     return (
         
-        <div class="input-container">
+        <div className="input-container">
             {
                 required
                 &&

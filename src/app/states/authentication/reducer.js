@@ -6,36 +6,22 @@ import {
 
 
 const initialState = {
-    postLoginResponse: initialStateFormat,
-    postRegisterResponse: initialStateFormat,
+    email: "",
+    password: "",
 }
 
 
 const AuthenticationReducer = (state = initialState, action) => {
     switch (action.type) {
-        // Post Login
-        case types.POST_LOGIN_SUCCESS: 
-        case types.POST_LOGIN_FAIL:
+        case types.SET_EMAIL: 
             return {
-                ...state,
-                postLoginResponse: Object.assign({}, state.postLoginResponse, action)
+                ...state, 
+                email: action.payload.email
             }
-        case types.RESET_POST_LOGIN: 
+        case types.SET_PASSWORD: 
             return {
-                ...state,
-                postLoginResponse: Object.assign({}, initialStateFormat)
-            }
-        //  Post Register
-        case types.POST_REGISTER_SUCCESS: 
-        case types.POST_REGISTER_FAIL: 
-            return {
-                ...state,
-                postRegisterResponse: Object.assign({}, state.postRegisterResponse, action)
-            }
-        case types.RESET_POST_REGISTER: 
-            return {
-                ...state,
-                postRegisterResponse: Object.assign({}, initialStateFormat)
+                ...state, 
+                password: action.payload.password
             }
         default:
             return state

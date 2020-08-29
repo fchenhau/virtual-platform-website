@@ -243,7 +243,6 @@ const RegisterContainer = () => {
                         onClick={() => handleUserTypeChange("individual")}>
                         <input
                             type="radio"
-                            checked={formInput.userType === "individual"}
                             style={{ position: 'absolute', opacity: 0, width: 0, height: 0 }}
                         />
                         <img 
@@ -258,7 +257,6 @@ const RegisterContainer = () => {
                         onClick={() => handleUserTypeChange("parent")}>
                         <input 
                             type="radio"
-                            checked={formInput.userType === "parent"}
                             style={{ position: 'absolute', opacity: 0, width: 0, height: 0 }}
                         />
                         <img 
@@ -273,7 +271,6 @@ const RegisterContainer = () => {
                         onClick={() => handleUserTypeChange("teacher")}>
                         <input 
                             type="radio"
-                            checked={formInput.userType === "teacher"}
                             style={{ position: 'absolute', opacity: 0, width: 0, height: 0 }}
                         />
                         <img 
