@@ -29,7 +29,7 @@ export const calculateXChecksum = (mainUser = {}, subUsers = []) => {
     const currentUtcTime = moment().format('hh:mm:ss');
 
     // Concatenate string 
-    let concatString = password + '|' + '|' + email + '|' + currentUtcDate + '|' + currentUtcTime + '|' + concatSubUserEmails;
+    let concatString = password + '|' + email + '|' + currentUtcDate + '|' + currentUtcTime + '|' + concatSubUserEmails;
     const base64Encoded = new Buffer(concatString).toString('base64');
 
     return base64Encoded;
@@ -53,14 +53,14 @@ export const calculateXChecksum = (mainUser = {}, subUsers = []) => {
 export const calculateXSignature = (mainUser = {}, subUsers = []) => {
  
     // Extract the required fields from mainUser
-    const { password, email, name, dob, phoneNumber } = mainUser;
+    const { password, email, name, dob, phone_no } = mainUser;
 
     // Extract the required fields from subUsers
     const subUserEmails = subUsers.map((user) => { return user.email });
     const concatSubUserEmails = subUserEmails.join('|');
 
     // Concatenate string 
-    let concatString = password + '|' + email + '|' + name + '|' + dob + '|' + phoneNumber + '|' + concatSubUserEmails;
+    let concatString = password + '|' + email + '|' + name + '|' + dob + '|' + phone_no + '|' + concatSubUserEmails;
     const encryptedString = sha256(concatString);
 
     return encryptedString;
