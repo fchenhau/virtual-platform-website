@@ -8,10 +8,15 @@ import About2 from "./public/About2"
 import Highlights from "./public/Highlights"
 import Speakers from "./public/Speakers"
 import Login from "./public/Login"
+import Register from "./public/Register"
 
 const Index = ({ history }) => {
 
     const refParallax = useRef(null);
+
+    const handleOnClickRegister = () => {
+        refParallax.current.scrollTo(4);
+    }
 
     return (
         <Parallax pages={5} scrolling={true} horizontal={false} ref={refParallax}>
@@ -25,12 +30,14 @@ const Index = ({ history }) => {
                 <About2 />
             </ParallaxLayer>
 
-            {/* <ParallaxLayer offset={3} speed={0}>
-                <Login />
-            </ParallaxLayer> */}
+            <ParallaxLayer offset={4} speed={0}>
+                <Register />
+            </ParallaxLayer>
             
             <ParallaxLayer offset={3} speed={0}>
-                <Login />
+                <Login 
+                    onClickRegister={handleOnClickRegister} 
+                />
             </ParallaxLayer>
 
             <ParallaxLayer offset={2} speed={0}>

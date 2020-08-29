@@ -107,12 +107,6 @@ const RegisterContainer = () => {
                         <RegisterComponent />
                     </TeacherInputContainer>
                 );
-            // case 'corporate':
-            //     return (
-            //         <CorporateInputContainer>
-            //             <RegisterComponent />
-            //         </CorporateInputContainer>
-            //     );
             default:
                 return <RegisterComponent />
         }

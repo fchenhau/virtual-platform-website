@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Authentication from "../../../apis/authentication"
 
-const LoginContainer = () => {
+const LoginContainer = ({ onClickRegister }) => {
 
     const [state, setState] = useState({
         email: "",
@@ -83,7 +83,7 @@ const LoginContainer = () => {
                             className="btn btn-primary mb-3 w-100">
                             Sign In
                         </button>
-                        <button type="button" onClick={handleRegister}
+                        <button type="button" onClick={onClickRegister}
                             className="btn btn-primary w-100">
                             Register
                         </button>
