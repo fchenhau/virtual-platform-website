@@ -4,6 +4,15 @@ import TeacherInputContainer from "./TeacherInputContainer"
 import CustomInput from "../../components/authentication/CustomInput"
 import Authentication from "../../../apis/authentication"
 
+import "../../../styles/containers/authentication/register.css"
+import IndividualRadioButton from "../../../assets/images/Register/MDM2020_07_05_REGISTER-28.png"
+import IndividualRadioButtonActive from "../../../assets/images/Register/MDM2020_07_05_REGISTER-31.png"
+import ParentRadioButton from "../../../assets/images/Register/parent_inactive.png"
+import ParentRadioButtonActive from "../../../assets/images/Register/parent_active.png"
+import TeacherRadioButton from "../../../assets/images/Register/teacher_inactive.png"
+import TeacherRadioButtonActive from "../../../assets/images/Register/teacher_active.png"
+
+
 const RegisterContainer = () => {
 
     const [formInput, setFormInput] = useState({
@@ -67,6 +76,10 @@ const RegisterContainer = () => {
         setFormInput({ ...formInput, [event.target.name]: event.target.value });
     }
 
+    const handleUserTypeChange = value => {
+        setFormInput({ ...formInput, userType: value });
+    }
+
     const handleRegister = (event) => {
         event.preventDefault();
         postRegister();
@@ -74,7 +87,7 @@ const RegisterContainer = () => {
 
     const RegisterComponent = () => {
         return (
-            <div className="d-flex justify-content-end align-items-center">
+            <div id="register_cta" className="d-flex justify-content-end align-items-center">
                 <div className="d-flex align-items-center pr-3">
                     <input 
                         type="checkbox"
@@ -126,7 +139,7 @@ const RegisterContainer = () => {
             </div>
             
 
-            <form id="register_form" className="mb-5 pb-5" onSubmit={handleRegister}>
+            <form id="register_form" onSubmit={handleRegister}>
                 <div className="row no-gutters mb-3">
                     <div className="col-lg-6 pr-3 mb-2">
                         <CustomInput
@@ -156,7 +169,7 @@ const RegisterContainer = () => {
                         </div>
                     </div>
 
-                    <div className="col-lg-6 pr-3 mb-2">
+                    <div className="col-lg-4 pr-3 mb-2">
                         <CustomInput
                             type="email"
                             name="email"
@@ -167,14 +180,21 @@ const RegisterContainer = () => {
                         />
                     </div>
 
-                    <div className="col-lg-3 pr-3 mb-2">
-                        <CustomInput
-                            type="date"
-                            name="dob"
-                            value={formInput.dob}
-                            required
-                            onChange={handleChange}
-                        />
+                    <div className="col-lg-5 pr-3 mb-2">
+                        <div className="d-flex align-items-center">
+                            <div className="pr-2">
+                                <span className="">Date of Birth</span>
+                            </div>
+                            <div className="flex-grow-1">
+                                <CustomInput
+                                    type="date"
+                                    name="dob"
+                                    value={formInput.dob}
+                                    required
+                                    onChange={handleChange}
+                                />
+                            </div>
+                        </div>
                     </div>
 
                     <div className="col-lg-3 mb-2">
@@ -217,51 +237,64 @@ const RegisterContainer = () => {
                     </div>
                 </div>
                 
-                <div className="mb-3 d-flex align-items-center">
-                    <div className="pr-3">
-                        <input 
-                            id="radio_individual"
+                <div className="row mb-3">
+                    <div className="pr-3 col-lg-2"
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => handleUserTypeChange("individual")}>
+                        <input
                             type="radio"
-                            name="userType"
-                            value="individual"
-                            onChange={handleChange}
                             checked={formInput.userType === "individual"}
+                            style={{ position: 'absolute', opacity: 0, width: 0, height: 0 }}
                         />
-                        <label htmlFor="radio_individual">Individual</label>
+                        <img 
+                            src={formInput.userType === "individual" ? IndividualRadioButtonActive : IndividualRadioButton} 
+                            alt="Individual" 
+                            className="img img-fluid"
+                        />
                     </div>
-                    <div className="pr-3">
+
+                    <div className="pr-3 col-lg-2"
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => handleUserTypeChange("parent")}>
                         <input 
-                            id="radio_parent"
                             type="radio"
-                            name="userType"
-                            value="parent"
-                            onChange={handleChange}
                             checked={formInput.userType === "parent"}
+                            style={{ position: 'absolute', opacity: 0, width: 0, height: 0 }}
                         />
-                        <label htmlFor="radio_parent">Parent</label>
+                        <img 
+                            src={formInput.userType === "parent" ? ParentRadioButtonActive : ParentRadioButton} 
+                            alt="Parent" 
+                            className="img img-fluid"
+                        />
                     </div>
-                    <div className="pr-3">
+
+                    <div className="pr-3 col-lg-2"
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => handleUserTypeChange("teacher")}>
                         <input 
-                            id="radio_teacher"
                             type="radio"
-                            name="userType"
-                            value="teacher"
-                            onChange={handleChange}
                             checked={formInput.userType === "teacher"}
+                            style={{ position: 'absolute', opacity: 0, width: 0, height: 0 }}
                         />
-                        <label htmlFor="radio_teacher">Teacher</label>
+                        <img 
+                            src={formInput.userType === "teacher" ? TeacherRadioButtonActive : TeacherRadioButton} 
+                            alt="Parent" 
+                            className="img img-fluid"
+                        />
                     </div>
+
                 </div>
 
-                <div className="mb-3">
-                    <input 
-                        type="text"
-                        name="organization"
-                        placeholder="School/Institution/Organization"
-                        className="form-control"
-                        value={formInput.organization}
-                        onChange={handleChange}
-                    />
+                <div className="row mb-3">
+                    <div className="col-lg-4 mb-3">
+                        <CustomInput
+                            type="text"
+                            name="organization"
+                            placeholder="School/Institution/Organization"
+                            value={formInput.organization}
+                            onChange={handleChange}
+                        />
+                    </div>
                 </div>
 
                 {renderBasedOnUserType()}

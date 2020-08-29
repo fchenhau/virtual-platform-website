@@ -10,6 +10,7 @@
 }
 
 .register-wrapper {
+    position: relative;
     width: 73vw;
-    height: 100vh;
+    height: 100%;
 }

@@ -6,7 +6,7 @@ const Register = () => {
 
     return (
         <div id="register">
-            <div className="register-wrapper">
+            <div className="register-wrapper d-flex align-items-center">
                 <RegisterContainer />
             </div>
         </div>
