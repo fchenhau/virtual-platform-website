@@ -11,7 +11,6 @@ const RegisterContainer = () => {
         phoneNumber: "",
         country: "Malaysia",
         email: "",
-        username: "",
         password: "",
         confirmPassword: "",
         age: 12,
@@ -23,7 +22,6 @@ const RegisterContainer = () => {
     const postRegister = () => {
         // Dummy data
         const mainUser = {
-            "username": "john_doe",
             "password": "123456",
             "email": "john_doe@gmail.com",
             "gender": 1,
@@ -34,7 +32,6 @@ const RegisterContainer = () => {
 
         const subUsers = [
             {
-                "username": "john_doe2",
                 "password": "123456",
                 "email": "john_doe2@gmail.com",
                 "gender": 1,
@@ -110,12 +107,12 @@ const RegisterContainer = () => {
                         <RegisterComponent />
                     </TeacherInputContainer>
                 );
-            case 'corporate':
-                return (
-                    <CorporateInputContainer>
-                        <RegisterComponent />
-                    </CorporateInputContainer>
-                );
+            // case 'corporate':
+            //     return (
+            //         <CorporateInputContainer>
+            //             <RegisterComponent />
+            //         </CorporateInputContainer>
+            //     );
             default:
                 return <RegisterComponent />
         }
@@ -193,17 +190,6 @@ const RegisterContainer = () => {
 
                 <div className="mb-3">
                     <input 
-                        type="text"
-                        name="username"
-                        placeholder="Username"
-                        className="form-control"
-                        value={formInput.username}
-                        onChange={handleChange}
-                    />
-                </div>
-
-                <div className="mb-3">
-                    <input 
                         type="password"
                         name="password"
                         placeholder="Password"
@@ -257,17 +243,6 @@ const RegisterContainer = () => {
                             checked={formInput.userType === "teacher"}
                         />
                         <label htmlFor="radio_teacher">Teacher</label>
-                    </div>
-                    <div className="pr-3">
-                        <input 
-                            id="radio_corporate"
-                            type="radio"
-                            name="userType"
-                            value="corporate"
-                            onChange={handleChange}
-                            checked={formInput.userType === "corporate"}
-                        />
-                        <label htmlFor="radio_corporate">Corporate</label>
                     </div>
                 </div>
 

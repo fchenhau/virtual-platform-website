@@ -4,12 +4,12 @@ import Authentication from "../../../apis/authentication"
 const LoginContainer = () => {
 
     const [state, setState] = useState({
-        username: "",
+        email: "",
         password: ""
     })
 
     const postLogin = () => {
-        Authentication.postLogin(state.username, state.password)
+        Authentication.postLogin(state.email, state.password)
             .then(response => {
                 const { code: responseCode } = response;
 
@@ -54,10 +54,10 @@ const LoginContainer = () => {
                         <div className="mb-3">
                             <input 
                                 type="text"
-                                name="username"
-                                placeholder="Username"
+                                name="email"
+                                placeholder="Email Address"
                                 className="form-control"
-                                value={state.username}
+                                value={state.email}
                                 onChange={handleChange}
                             />
                         </div>

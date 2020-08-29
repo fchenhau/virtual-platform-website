@@ -5,31 +5,31 @@ import sha256 from "js-sha256"
  * Formula: 
  *  base64(
         body.users.main.password + '|' +
-        body.users.main.username +'|' + 
         body.users.main.email + '|' +
         <current_utc_date in yyyy-mm-dd> + '|' +
         <current_utc_time in hh:mm:ss>  + '|' + 
-        body_users.sub[0].username + '|' +
-        body_users.sub[1].username + '|' +
+        body_users.sub[0].email + '|' +
+        body_users.sub[1].email + '|' +
     )
+    * repeat for all sub users*
  * @param {Object} mainUser 
- * @param {Array} subUsernames 
+ * @param {Array} subUsers 
  */
 export const calculateXChecksum = (mainUser = {}, subUsers = []) => {
 
     // Extract the required fields from mainUser
-    const { password, username, email } = mainUser;
+    const { password, email } = mainUser;
 
     // Extract the required fields from subUsers
-    const subUsernames = subUsers.map((user) => { return user.username });
-    const concatSubUsernames = subUsernames.join('|');
+    const subUserEmails = subUsers.map((user) => { return user.email });
+    const concatSubUserEmails = subUserEmails.join('|');
 
     // Get the required date
     const currentUtcDate = moment().format('yyyy-mm-dd');
     const currentUtcTime = moment().format('hh:mm:ss');
 
     // Concatenate string 
-    let concatString = password + '|' + username + '|' + email + '|' + currentUtcDate + '|' + currentUtcTime + '|' + concatSubUsernames;
+    let concatString = password + '|' + '|' + email + '|' + currentUtcDate + '|' + currentUtcTime + '|' + concatSubUserEmails;
     const base64Encoded = new Buffer(concatString).toString('base64');
 
     return base64Encoded;
@@ -40,25 +40,27 @@ export const calculateXChecksum = (mainUser = {}, subUsers = []) => {
  * Formula: 
     sha256(
         body.users.main.password + '|' +
-        body.users.main.username + '|' +
         body.users.main.email + '|' +
+        body.users.main.name + '|' +
+        body.users.main.dob + '|' +
         body.users.main.phone_no + '|' +
-        body.users.sub.username + '|' +
+        body.users.sub.email + '|' +
     )
+    *repeat for every sub users*
  * @param {Object} mainUser 
- * @param {Array} subUsernames 
+ * @param {Array} subUsers 
  */
 export const calculateXSignature = (mainUser = {}, subUsers = []) => {
  
     // Extract the required fields from mainUser
-    const { password, username, email, phoneNumber } = mainUser;
+    const { password, email, name, dob, phoneNumber } = mainUser;
 
     // Extract the required fields from subUsers
-    const subUsernames = subUsers.map((user) => { return user.username });
-    const concatSubUsernames = subUsernames.join('|');
+    const subUserEmails = subUsers.map((user) => { return user.email });
+    const concatSubUserEmails = subUserEmails.join('|');
 
     // Concatenate string 
-    let concatString = password + '|' + username + '|' + email + '|' + phoneNumber + '|' + concatSubUsernames;
+    let concatString = password + '|' + email + '|' + name + '|' + dob + '|' + phoneNumber + '|' + concatSubUserEmails;
     const encryptedString = sha256(concatString);
 
     return encryptedString;

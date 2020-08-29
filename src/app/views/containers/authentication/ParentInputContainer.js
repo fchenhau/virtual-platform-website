@@ -21,7 +21,6 @@ const ParentInputContainer = ({ children }) => {
     const [parentInput, setParentInput] = useState({
         spouseName: "",
         spouseAge: 12,
-        spouseUsername: "",
         spousePassword: "",
         spouseConfirmPassword: "",
         spouseEmail: "",
@@ -59,17 +58,6 @@ const ParentInputContainer = ({ children }) => {
                         className="mx-2"
                     />
                     <span>years</span>
-                </div>
-
-                <div className="mb-3">
-                    <input 
-                        type="text"
-                        name="spouseUsername"
-                        placeholder="Username"
-                        className="form-control"
-                        value={parentInput.spouseUsername}
-                        onChange={handleChange}
-                    />
                 </div>
 
                 <div className="mb-3">

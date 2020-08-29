@@ -3,13 +3,13 @@ import { calculateXChecksum, calculateXSignature } from "../helper/checksum"
 
 const Authentication = {
 
-    postLogin: (username, password, eventId = 1) => {
+    postLogin: (email, password, eventId = 1) => {
         return new Promise((resolve, reject) => {
             /** Define API Url Path */
             const url = `/users/login`;
 
             const data = {
-                'username': username, 
+                'email': email, 
                 'password': password, 
                 'event_id': eventId
             }
