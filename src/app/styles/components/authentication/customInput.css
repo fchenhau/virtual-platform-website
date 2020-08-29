@@ -13,16 +13,13 @@
 
 .icon {
     color: blue;
-    width: 0.6rem !important;
-    height: 0.6rem !important;
+    width: 0.5rem !important;
+    height: 0.5rem !important;
 }
   
 .input-field {
     position: relative;
     width: 100%;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 30px;
     outline: none;
     border: none;
     border-bottom: 1px solid grey;

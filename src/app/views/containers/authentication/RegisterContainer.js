@@ -13,7 +13,8 @@ const RegisterContainer = () => {
         email: "",
         password: "",
         confirmPassword: "",
-        age: 12,
+        dob: "",
+        gender: "",
         userType: "individual",
         organization: "",
         isAgreeToTnc: false,
@@ -126,92 +127,96 @@ const RegisterContainer = () => {
             
 
             <form id="register_form" className="mb-5 pb-5" onSubmit={handleRegister}>
-                <div className="mb-3">
-                    <CustomInput
-                        type="text"
-                        name="fullname"
-                        placeholder="Full Name"
-                        value={formInput.fullname}
-                        required
-                        onChange={handleChange}
-                    />
+                <div className="row no-gutters mb-3">
+                    <div className="col-lg-6 pr-3 mb-2">
+                        <CustomInput
+                            type="text"
+                            name="fullname"
+                            placeholder="Full Name"
+                            value={formInput.fullname}
+                            required
+                            onChange={handleChange}
+                        />
+                    </div>
+                    
+                    <div className="col-lg-3 pr-3 mb-2">
+                        <CustomInput
+                            type="text"
+                            name="phoneNumber"
+                            placeholder="Phone Number"
+                            value={formInput.phoneNumber}
+                            onChange={handleChange}
+                        />
+                    </div>
 
-                </div>
+                    <div className="col-lg-3 mb-2">
+                        <div className="d-flex align-items-center p-2">
+                            <span className="pr-2">Country</span>
+                            <span className="bg-white text-center w-100">Malaysia</span>
+                        </div>
+                    </div>
 
-                <div className="mb-3">
-                    <input 
-                        type="text"
-                        name="phoneNumber"
-                        placeholder="Phone Number"
-                        className="form-control"
-                        value={formInput.phoneNumber}
-                        onChange={handleChange}
-                    />
-                </div>
+                    <div className="col-lg-6 pr-3 mb-2">
+                        <CustomInput
+                            type="email"
+                            name="email"
+                            placeholder="Email Address"
+                            value={formInput.email}
+                            required
+                            onChange={handleChange}
+                        />
+                    </div>
 
-                <div className="mb-3">
-                    <input 
-                        type="text"
-                        name="country"
-                        placeholder="Country"
-                        className="form-control"
-                        value={formInput.country}
-                        onChange={handleChange}
-                    />
-                </div>
+                    <div className="col-lg-3 pr-3 mb-2">
+                        <CustomInput
+                            type="date"
+                            name="dob"
+                            value={formInput.dob}
+                            required
+                            onChange={handleChange}
+                        />
+                    </div>
 
-                <div className="mb-3 d-flex align-items-center bg-light p-3">
-                    <span className="pr-3">Country</span>
-                    <span className="bg-white text-center w-100">Malaysia</span>
+                    <div className="col-lg-3 mb-2">
+                        <div className="d-flex align-items-center p-2">
+                            <span className="pr-2">State</span>
+                            <span className="bg-white text-center w-100">Selangor</span>
+                        </div>
+                    </div>
+
+                    <div className="col-lg-4 pr-3 mb-2">
+                        <CustomInput
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            value={formInput.password}
+                            required
+                            onChange={handleChange}
+                        />
+                    </div>
+
+                    <div className="col-lg-4 pr-3 mb-2">
+                        <CustomInput
+                            type="password"
+                            name="confirmPassword"
+                            placeholder="Confirm Password"
+                            value={formInput.confirmPassword}
+                            required
+                            onChange={handleChange}
+                        />
+                    </div>
+
+                    <div className="col-lg-2 pr-3 mb-2">
+                        <CustomInput
+                            type="text"
+                            name="gender"
+                            placeholder="Gender"
+                            value={formInput.gender}
+                            onChange={handleChange}
+                        />
+                    </div>
                 </div>
                 
-                <div className="mb-3">
-                    <input 
-                        type="email"
-                        name="email"
-                        placeholder="Email Address"
-                        className="form-control"
-                        value={formInput.email}
-                        onChange={handleChange}
-                    />
-                </div>
-
-                <div className="mb-3 d-flex align-items-center">
-                    <span>Age</span>
-                    <input 
-                        type="number"
-                        name="age"
-                        placeholder="Age"
-                        className="form-control"
-                        value={formInput.age}
-                        onChange={handleChange}
-                        className="mx-2"
-                    />
-                    <span>years</span>
-                </div>
-
-                <div className="mb-3">
-                    <input 
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        className="form-control"
-                        value={formInput.password}
-                        onChange={handleChange}
-                    />
-                </div>
-
-                <div className="mb-3">
-                    <input 
-                        type="password"
-                        name="confirmPassword"
-                        placeholder="Confirm Password"
-                        className="form-control"
-                        value={formInput.confirmPassword}
-                        onChange={handleChange}
-                    />
-                </div>
-
                 <div className="mb-3 d-flex align-items-center">
                     <div className="pr-3">
                         <input 
