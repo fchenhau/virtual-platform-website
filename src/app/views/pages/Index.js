@@ -20,7 +20,7 @@ const Index = ({ history }) => {
     }
 
     return (
-        <Parallax pages={6} scrolling={true} horizontal={false} ref={refParallax}>
+        <Parallax pages={5} scrolling={true} horizontal={false} ref={refParallax}>
 
             {/* Static Layers */}
             <ParallaxLayer offset={0} speed={0}>
@@ -30,30 +30,35 @@ const Index = ({ history }) => {
             <ParallaxLayer offset={1} speed={0}>
                 <About2 />
             </ParallaxLayer>
-            
-            <ParallaxLayer offset={4} speed={0}>
-                <Register />
+
+            <ParallaxLayer offset={2} speed={0}>
+                <Speakers />
             </ParallaxLayer>
-            
+
             <ParallaxLayer offset={3} speed={0}>
                 <Login 
                     onClickRegister={handleOnClickRegister} 
                 />
             </ParallaxLayer>
 
-            <ParallaxLayer offset={2} speed={0}>
-                <Speakers />
+            <ParallaxLayer offset={4} speed={0}>
+                <Register />
             </ParallaxLayer>
 
 
+
+
+            
+
+
             {/* Moving Layers */}
-            <ParallaxLayer offset={0.99} speed={1}>
+            {/* <ParallaxLayer offset={0.99} speed={1}>
                 <About1 />
             </ParallaxLayer>
 
             <ParallaxLayer offset={1.99} speed={1}>
                 <Highlights />
-            </ParallaxLayer>
+            </ParallaxLayer> */}
         </Parallax>
     )
 };

@@ -14,3 +14,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.text-header {
+  font-family: 'Bebas Neue';
+  letter-spacing: 0.3rem;
+}

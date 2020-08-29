@@ -10,9 +10,17 @@
 }
 
 .login-wrapper {
-    /* position: absolute;
-    top: 50%;
-    transform: translate(0, -50%); */
-    width: 50vw;
-    height: 100vh;
+    position: relative;
+    width: 45vw;
+    height: 100%;
+}
+
+#login_container {
+    position: relative;
+    height: 90%;
+}
+
+#login_form_container {
+    box-shadow: 7px 7px 5px lightgrey;
+    height: 80%;
 }
