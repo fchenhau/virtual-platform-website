@@ -1,8 +1,5 @@
 import IndexPage from "../views/pages/Index"
 import SeeYouSoonPage from "../views/pages/public/SeeYouSoon"
-import HomePage from "../views/pages/Home"
-import TestPage from "../views/pages/Test"
-import LoginPage from "../views/pages/Login"
 import ScrollPage from "../views/pages/Scroll"
 
 const PublicRoutes = [{
@@ -14,14 +11,6 @@ const PublicRoutes = [{
     path: '/see-you',
     label: 'See You Soon Page',
     component: SeeYouSoonPage
-}, {
-    path: '/test',
-    label: 'Test Page',
-    component: TestPage
-}, {
-    path: '/login',
-    label: 'Login Page',
-    component: LoginPage
 }, {
     path: '/scroll',
     label: 'Scroll Page',
