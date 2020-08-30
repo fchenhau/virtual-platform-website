@@ -8,6 +8,7 @@ import {
 const initialState = {
     email: "",
     password: "",
+    subUsersCount: 3,
 }
 
 
@@ -22,6 +23,16 @@ const AuthenticationReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 password: action.payload.password
+            }
+        case types.ADD_SUBUSERS_COUNT: 
+            return {
+                ...state, 
+                subUsersCount: state.subUsersCount + 1
+            }
+        case types.REMOVE_SUBUSERS_COUNT: 
+            return {
+                ...state, 
+                subUsersCount: state.subUsersCount - 1
             }
         default:
             return state

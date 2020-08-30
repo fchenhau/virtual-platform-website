@@ -71,6 +71,33 @@
                 }
             }
             
+            #subUsers_container {
+                height: 250px;
+                
+                #add_more_wrapper {
+                    border-bottom: 1px solid #6D676C;
+                    
+                    .custom-btn-add {
+                        background-color: #6D676C;
+                        color: #ffffff;
+                        font-weight: bold;
+                        border: none;
+                        outline: none;
+                        text-align: center;
+                        padding: 4px;
+                    }
+                }
+
+                .subUsers-input-wrapper {
+                    height: 230px;
+                    overflow: auto;
+
+                    .subUser-input {
+                        border-bottom: 2px solid #6D676C;
+                    }
+                }
+                
+            }
         }
     }
 }

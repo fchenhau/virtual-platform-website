@@ -3,6 +3,10 @@ import ParentInputContainer from "./ParentInputContainer"
 import TeacherInputContainer from "./TeacherInputContainer"
 import CustomInput from "../../components/authentication/CustomInput"
 import Authentication from "../../../apis/authentication"
+import { useDispatch, useSelector } from "react-redux";
+import { authenticationActions } from "../../../states/authentication";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
 
 import IndividualRadioButton from "../../../assets/images/Register/MDM2020_07_05_REGISTER-28.png"
 import IndividualRadioButtonActive from "../../../assets/images/Register/MDM2020_07_05_REGISTER-31.png"
@@ -15,6 +19,12 @@ import { STATES } from "../../../config/constant"
 
 const RegisterContainer = () => {
 
+    const dispatch = useDispatch();
+    const addSubUsersCount = () => dispatch(authenticationActions.addSubUsersCount());
+    const removeSubUsersCount = () => dispatch(authenticationActions.removeSubUsersCount());
+
+    const subUsersCount = useSelector(({ auth }) => auth.subUsersCount);
+
     const [formInput, setFormInput] = useState({
         fullname: "",
         phoneNumber: "",
@@ -25,7 +35,7 @@ const RegisterContainer = () => {
         confirmPassword: "",
         dob: "",
         gender: "",
-        userType: "individual",
+        userType: "parent",
         organization: "",
         isAgreeToTnc: false,
     })
@@ -84,6 +94,19 @@ const RegisterContainer = () => {
     const handleRegister = (event) => {
         event.preventDefault();
         postRegister();
+    }
+
+    // Use to determine the number of group input
+    const [rowItemCount, setrowItemCount] = useState(3)
+
+    const addSubUsers = () => {
+        addSubUsersCount();
+    }
+
+    const removeSubUsers = () => {
+        if (subUsersCount <= 1) return;
+
+        removeSubUsersCount();
     }
 
     const RegisterComponent = () => {
@@ -299,8 +322,8 @@ const RegisterContainer = () => {
 
                 </div>
 
-                <div className="row mb-3 text-input">
-                    <div className="col-lg-4 mb-3">
+                <div className="row mb-1 text-input">
+                    <div className="col-lg-4">
                         <CustomInput
                             type="text"
                             name="organization"
@@ -310,8 +333,25 @@ const RegisterContainer = () => {
                         />
                     </div>
                 </div>
+                
+                
+                <div id="subUsers_container">
+                    <div id="add_more_wrapper" className="d-flex justify-content-end align-items-center mb-2">
+                        <span className="mr-2 text-input">Add more</span>
+                        <button type="button" className="custom-btn-add d-flex align-items-center mr-1"
+                            onClick={removeSubUsers}>
+                            <FontAwesomeIcon icon={faMinus} size="xs" />
+                        </button>
+                        <button type="button" className="custom-btn-add d-flex align-items-center"
+                            onClick={addSubUsers}>
+                            <FontAwesomeIcon icon={faPlus} size="xs" />
+                        </button>
+                    </div>
 
-                {renderBasedOnUserType()}
+                    <div className="subUsers-input-wrapper">
+                        { renderBasedOnUserType() }
+                    </div>
+                </div>
 
             </form>
         </div>

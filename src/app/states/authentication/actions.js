@@ -13,3 +13,11 @@ export const setPassword = (password) => ({
         password
     }
 });
+
+export const addSubUsersCount = () => ({
+    type: types.ADD_SUBUSERS_COUNT,
+});
+
+export const removeSubUsersCount = () => ({
+    type: types.REMOVE_SUBUSERS_COUNT,
+});
