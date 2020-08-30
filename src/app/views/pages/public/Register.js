@@ -1,5 +1,5 @@
 import React from 'react'
-import "../../../styles/register.css"
+import "../../../styles/register.scss"
 import RegisterContainer from "../../containers/authentication/RegisterContainer"
 
 const Register = () => {
