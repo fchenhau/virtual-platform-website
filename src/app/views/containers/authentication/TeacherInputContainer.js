@@ -22,7 +22,7 @@ const TeacherInputContainer = ({ children }) => {
                             dob={subUser.dob}
                             schoolName={subUser.school_name}
                             password={subUser.password}
-                            confirmPassword={subUser.confirmPassword}
+                            confirmPassword={subUser.confirm_password}
                             email={subUser.email}
                         />
                     )

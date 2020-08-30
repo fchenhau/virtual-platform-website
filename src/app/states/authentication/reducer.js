@@ -7,7 +7,7 @@ const initialState = {
     email: "",
     password: "",
     subUsers: [
-        subUserProps, subUserProps, subUserProps
+        subUserProps
     ]
 }
 

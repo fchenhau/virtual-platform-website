@@ -21,15 +21,23 @@ export const calculateXChecksum = (mainUser = {}, subUsers = []) => {
     const { password, email } = mainUser;
 
     // Extract the required fields from subUsers
-    const subUserEmails = subUsers.map((user) => { return user.email });
-    const concatSubUserEmails = subUserEmails.join('|');
+    let concatSubUserEmails = "";
+    if (subUsers.length > 0) {
+        const subUserEmails = subUsers.map((user) => { return user.email });
+        concatSubUserEmails = subUserEmails.join('|');
+    }
 
     // Get the required date
     const currentUtcDate = moment().format('yyyy-mm-dd');
     const currentUtcTime = moment().format('hh:mm:ss');
 
     // Concatenate string 
-    let concatString = password + '|' + email + '|' + currentUtcDate + '|' + currentUtcTime + '|' + concatSubUserEmails;
+    let concatString = password + '|' + email + '|' + currentUtcDate + '|' + currentUtcTime;
+
+    if (subUsers.length > 0) {
+        concatString = concatString + '|' + concatSubUserEmails;
+    }
+    
     const base64Encoded = new Buffer(concatString).toString('base64');
 
     return base64Encoded;
@@ -56,11 +64,19 @@ export const calculateXSignature = (mainUser = {}, subUsers = []) => {
     const { password, email, name, dob, phone_no } = mainUser;
 
     // Extract the required fields from subUsers
-    const subUserEmails = subUsers.map((user) => { return user.email });
-    const concatSubUserEmails = subUserEmails.join('|');
+    let concatSubUserEmails = "";
+    if (subUsers.length > 0) {
+        const subUserEmails = subUsers.map((user) => { return user.email });
+        concatSubUserEmails = subUserEmails.join('|');
+    }
 
     // Concatenate string 
-    let concatString = password + '|' + email + '|' + name + '|' + dob + '|' + phone_no + '|' + concatSubUserEmails;
+    let concatString = password + '|' + email + '|' + name + '|' + dob + '|' + phone_no;
+
+    if (subUsers.length > 0) {
+        concatString = concatString + '|' + concatSubUserEmails;
+    }
+
     const encryptedString = sha256(concatString);
 
     return encryptedString;

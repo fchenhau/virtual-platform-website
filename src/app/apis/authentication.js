@@ -32,12 +32,17 @@ const Authentication = {
                 }
             }
 
+            let users = {
+                main: mainUser
+            }
+
+            if (subUsers.length > 0) {
+                users.sub = subUsers;
+            }
+
             const data = {
                 "event_id": eventId,
-                "users": { 
-                    "main": mainUser, 
-                    "sub": subUsers 
-                }
+                "users": users
             }
 
             apiAction.post(url, data, config)

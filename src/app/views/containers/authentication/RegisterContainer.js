@@ -38,7 +38,7 @@ const RegisterContainer = ({ history }) => {
         confirmPassword: "",
         dob: "",
         gender: "",
-        userType: "parent",
+        userType: "individual",
         organization: "",
         isAgreeToTnc: false,
     })
@@ -52,10 +52,13 @@ const RegisterContainer = ({ history }) => {
             dob: formInput.dob,
             email: formInput.email,
             password: formInput.password,
-            gender: 1,
+            gender: parseInt(formInput.gender),
         };
 
-        const subUsers = subUsersArray;
+        let subUsers = [];
+        if (formInput.userType !== 'individual') {
+            subUsers = subUsersArray;
+        }
 
         // Post register API
         Authentication.postRegister(mainUser, subUsers)
@@ -93,6 +96,26 @@ const RegisterContainer = ({ history }) => {
 
     const handleRegister = (event) => {
         event.preventDefault();
+
+        // Check if agree tnc is checked
+        if (!formInput.isAgreeToTnc) {
+            alert('Please check the checkbox to agree to the T&C');
+            return;
+        }
+
+        // Check password is same as confirm password
+        if (formInput.password !== formInput.confirmPassword) {
+            alert('Main User password not match');
+            return;
+        }
+
+        for (let i = 0; i < subUsersArray.length; i++) {
+            if (subUsersArray[i].password !== subUsersArray[i].confirm_password) {
+                alert('Sub-User password & confirm password not match')
+                return;
+            }
+        }
+
         postRegister();
     }
 
@@ -264,13 +287,14 @@ const RegisterContainer = ({ history }) => {
                     </div>
 
                     <div className="col-lg-2 pr-3 mb-1 text-input">
-                        <CustomInput
-                            type="text"
-                            name="gender"
-                            placeholder="Gender"
-                            value={formInput.gender}
+                        <select name="gender" className="w-100 text-center"
+                            defaultValue={formInput.gender}
                             onChange={handleChange}
-                        />
+                            required>
+                            <option value="">Select Gender</option>
+                            <option value={0}>Male</option>
+                            <option value={1}>Female</option>
+                        </select>
                     </div>
                 </div>
                 
@@ -332,23 +356,29 @@ const RegisterContainer = ({ history }) => {
                 </div>
                 
                 
-                <div id="subUsers_container">
-                    <div id="add_more_wrapper" className="d-flex justify-content-end align-items-center mb-2">
-                        <span className="mr-2 text-input">Add more</span>
-                        <button type="button" className="custom-btn-add d-flex align-items-center mr-1"
-                            onClick={removeSubUsers}>
-                            <FontAwesomeIcon icon={faMinus} size="xs" />
-                        </button>
-                        <button type="button" className="custom-btn-add d-flex align-items-center"
-                            onClick={addSubUsers}>
-                            <FontAwesomeIcon icon={faPlus} size="xs" />
-                        </button>
-                    </div>
+                {
+                    formInput.userType !== 'individual'
+                    ?
+                    <div id="subUsers_container">
+                        <div id="add_more_wrapper" className="d-flex justify-content-end align-items-center mb-2">
+                            <span className="mr-2 text-input">Add more</span>
+                            <button type="button" className="custom-btn-add d-flex align-items-center mr-1"
+                                onClick={removeSubUsers}>
+                                <FontAwesomeIcon icon={faMinus} size="xs" />
+                            </button>
+                            <button type="button" className="custom-btn-add d-flex align-items-center"
+                                onClick={addSubUsers}>
+                                <FontAwesomeIcon icon={faPlus} size="xs" />
+                            </button>
+                        </div>
 
-                    <div className="subUsers-input-wrapper">
-                        { renderBasedOnUserType() }
+                        <div className="subUsers-input-wrapper">
+                            { renderBasedOnUserType() }
+                        </div>
                     </div>
-                </div>
+                    :
+                    <RegisterComponent />
+                }
 
             </form>
         </div>
