@@ -10,7 +10,7 @@ import ParentRadioButton from "../../../assets/images/Register/parent_inactive.p
 import ParentRadioButtonActive from "../../../assets/images/Register/parent_active.png"
 import TeacherRadioButton from "../../../assets/images/Register/teacher_inactive.png"
 import TeacherRadioButtonActive from "../../../assets/images/Register/teacher_active.png"
-import BtnRegister from "../../../assets/images/Register/btn_register.png"
+import { STATES } from "../../../config/constant"
 
 
 const RegisterContainer = () => {
@@ -19,6 +19,7 @@ const RegisterContainer = () => {
         fullname: "",
         phoneNumber: "",
         country: "Malaysia",
+        state: "Selangor",
         email: "",
         password: "",
         confirmPassword: "",
@@ -167,9 +168,9 @@ const RegisterContainer = () => {
                     </div>
 
                     <div className="col-lg-3 mb-1 text-input">
-                        <div className="d-flex align-items-center p-2">
-                            <span className="pr-2">Country</span>
-                            <span className="bg-white text-center w-100">Malaysia</span>
+                        <div className="row no-gutters p-2">
+                            <span className="col-3 pr-2">Country</span>
+                            <span className="col-9 bg-white text-center w-100">Malaysia</span>
                         </div>
                     </div>
 
@@ -202,9 +203,21 @@ const RegisterContainer = () => {
                     </div>
 
                     <div className="col-lg-3 mb-1 text-input">
-                        <div className="d-flex align-items-center p-2">
-                            <span className="pr-2">State</span>
-                            <span className="bg-white text-center w-100">Selangor</span>
+                        <div className="row no-gutters p-2">
+                            <span className="col-3 pr-2">State</span>
+                            <div className="col-9 bg-white">
+                                <select name="state" className="w-100 text-center"
+                                    onChange={handleChange}>
+                                    {STATES.map((item, index) => (
+                                        <option 
+                                            key={index}
+                                            value={item}
+                                            selected={formInput.state === item}>
+                                            {item}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
                         </div>
                     </div>
 
