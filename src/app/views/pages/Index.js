@@ -45,20 +45,14 @@ const Index = ({ history }) => {
                 <Register />
             </ParallaxLayer>
 
-
-
-
-            
-
-
             {/* Moving Layers */}
-            {/* <ParallaxLayer offset={0.99} speed={1}>
+            <ParallaxLayer offset={0.99} speed={1}>
                 <About1 />
             </ParallaxLayer>
 
             <ParallaxLayer offset={1.99} speed={1}>
                 <Highlights />
-            </ParallaxLayer> */}
+            </ParallaxLayer>
         </Parallax>
     )
 };
