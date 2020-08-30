@@ -16,3 +16,14 @@ export const STATES = [
     'Selangor',
     'Terengganu',
 ]
+
+export const subUserProps = {
+    "name": "",
+    "dob": "",
+    "email": "",
+    "password": "",
+    "confirm_password": "",
+    "school_name": "",
+    "gender": 1,
+    "phone_no": "0123456789",
+}

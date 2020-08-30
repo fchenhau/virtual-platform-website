@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { authenticationActions } from "../../../states/authentication";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
+import { withRouter } from 'react-router-dom'
 
 import IndividualRadioButton from "../../../assets/images/Register/MDM2020_07_05_REGISTER-28.png"
 import IndividualRadioButtonActive from "../../../assets/images/Register/MDM2020_07_05_REGISTER-31.png"
@@ -17,13 +18,15 @@ import TeacherRadioButtonActive from "../../../assets/images/Register/teacher_ac
 import { STATES } from "../../../config/constant"
 
 
-const RegisterContainer = () => {
+const RegisterContainer = ({ history }) => {
 
     const dispatch = useDispatch();
     const addSubUsersCount = () => dispatch(authenticationActions.addSubUsersCount());
     const removeSubUsersCount = () => dispatch(authenticationActions.removeSubUsersCount());
+    const setEmail = (email) => dispatch(authenticationActions.setEmail(email));
+    const setPassword = (password) => dispatch(authenticationActions.setPassword(password));
 
-    const subUsersCount = useSelector(({ auth }) => auth.subUsersCount);
+    const subUsersArray = useSelector(({ auth }) => auth.subUsers);
 
     const [formInput, setFormInput] = useState({
         fullname: "",
@@ -41,27 +44,20 @@ const RegisterContainer = () => {
     })
 
     const postRegister = () => {
-        // Dummy data
+
+        // Prepare data
         const mainUser = {
-            "password": "123456",
-            "email": "john_doe@gmail.com",
-            "gender": 1,
-            "name": "Test User",
-            "phone_no": "0123874984",
-            "dob": "1991-01-19"
+            name: formInput.fullname,
+            phone_no: formInput.phoneNumber,
+            dob: formInput.dob,
+            email: formInput.email,
+            password: formInput.password,
+            gender: 1,
         };
 
-        const subUsers = [
-            {
-                "password": "123456",
-                "email": "john_doe2@gmail.com",
-                "gender": 1,
-                "name": "Test 002",
-                "phone_no": "0123456789",
-                "dob": "1991-01-19"
-            }
-        ];
+        const subUsers = subUsersArray;
 
+        // Post register API
         Authentication.postRegister(mainUser, subUsers)
             .then(response => {
                 const { code: responseCode } = response;
@@ -70,12 +66,16 @@ const RegisterContainer = () => {
                 if (responseCode === 200) {
                     const { data } = response;
                     console.log(data);
+                    setEmail(formInput.email);
+                    setPassword(formInput.password);
+                    history.push('/see-you');
                 }
                 
                 // if fail, return fail type
                 if (responseCode !== 200) {
                     const { errors } = response;
                     console.log(`PostRegister: ${responseCode} - ${errors}`)
+                    alert(errors);
                 }
             })
             .catch(error => {
@@ -96,15 +96,12 @@ const RegisterContainer = () => {
         postRegister();
     }
 
-    // Use to determine the number of group input
-    const [rowItemCount, setrowItemCount] = useState(3)
-
     const addSubUsers = () => {
         addSubUsersCount();
     }
 
     const removeSubUsers = () => {
-        if (subUsersCount <= 1) return;
+        if (subUsersArray.length <= 1) return;
 
         removeSubUsersCount();
     }
@@ -230,12 +227,12 @@ const RegisterContainer = () => {
                             <span className="col-3 pr-2">State</span>
                             <div className="col-9 bg-white">
                                 <select name="state" className="w-100 text-center"
+                                    defaultValue={formInput.state}
                                     onChange={handleChange}>
                                     {STATES.map((item, index) => (
                                         <option 
                                             key={index}
-                                            value={item}
-                                            selected={formInput.state === item}>
+                                            value={item}>
                                             {item}
                                         </option>
                                     ))}
@@ -358,4 +355,4 @@ const RegisterContainer = () => {
     )
 };
 
-export default (RegisterContainer);
+export default withRouter(RegisterContainer);

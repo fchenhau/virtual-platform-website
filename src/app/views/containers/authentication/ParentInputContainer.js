@@ -4,20 +4,26 @@ import { useDispatch, useSelector } from "react-redux";
 
 const ParentInputContainer = ({ children }) => {
 
-    const subUsersCount = useSelector(({ auth }) => auth.subUsersCount);
+    const subUsers = useSelector(({ auth }) => auth.subUsers);
 
     return (
         <div id="parent_input_container">
 
             {
-                subUsersCount > 0
+                subUsers.length > 0
                 &&
-                [...new Array(subUsersCount)].map((item, index) => {
+                subUsers.map((subUser, index) => {
                     return (
                         <SubUserInputRowItem 
                             key={index}
-                            mainUserType="parent"
                             index={index} 
+                            mainUserType="parent"
+                            name={subUser.name}
+                            dob={subUser.dob}
+                            schoolName={subUser.school_name}
+                            password={subUser.password}
+                            confirmPassword={subUser.confirmPassword}
+                            email={subUser.email}
                         />
                     )
                 })

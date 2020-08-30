@@ -1,14 +1,14 @@
 import * as types from "./types"
-
-import {
-    initialStateFormat
-} from "../../lib/redux/reduxStateFormat"
+import { subUserProps } from "../../config/constant"
+import { initialStateFormat } from "../../lib/redux/reduxStateFormat"
 
 
 const initialState = {
     email: "",
     password: "",
-    subUsersCount: 3,
+    subUsers: [
+        subUserProps, subUserProps, subUserProps
+    ]
 }
 
 
@@ -25,14 +25,29 @@ const AuthenticationReducer = (state = initialState, action) => {
                 password: action.payload.password
             }
         case types.ADD_SUBUSERS_COUNT: 
+            let newAddedSubUsersArray = state.subUsers;
+            newAddedSubUsersArray.push(subUserProps);
+            
             return {
                 ...state, 
-                subUsersCount: state.subUsersCount + 1
+                subUsers: [...newAddedSubUsersArray]
             }
         case types.REMOVE_SUBUSERS_COUNT: 
+            let newRemovedSubUsersArray = state.subUsers;
+            newRemovedSubUsersArray.pop();
+            
             return {
                 ...state, 
-                subUsersCount: state.subUsersCount - 1
+                subUsers: [...newRemovedSubUsersArray]
+            }
+
+        case types.SET_SUBUSER: 
+            const { index, data } = action.payload;
+            state.subUsers[index] = { ...state.subUsers[index], ...data };
+
+            return {
+                ...state, 
+                subUsers: [...state.subUsers]
             }
         default:
             return state

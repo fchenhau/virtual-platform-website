@@ -1,19 +1,15 @@
 import React, { useState } from 'react'
 import CustomInput from "./CustomInput"
+import { useDispatch, useSelector } from "react-redux";
+import { authenticationActions } from "../../../states/authentication";
 
-const SubUserInputRowItem = ({ index, mainUserType }) => {
+const SubUserInputRowItem = ({ index, mainUserType, name, dob, schoolName, password, confirmPassword, email }) => {
 
-    const [input, setInput] = useState({
-        subUserName: "",
-        subUserDob: "",
-        subUserSchoolName: "",
-        subUserPassword: "",
-        subUserConfirmPassword: "",
-        subUserEmail: ""
-    })
+    const dispatch = useDispatch();
+    const setSubUser = (index, data) => dispatch(authenticationActions.setSubUser(index, data));
 
     const handleChange = (event) => {
-        setInput({ ...input, [event.target.name]: event.target.value });
+        setSubUser(index, {[event.target.name]: event.target.value});
     }
 
     // Set the placholder name
@@ -29,9 +25,9 @@ const SubUserInputRowItem = ({ index, mainUserType }) => {
             <div className="col-lg-4 mb-1 text-input pr-3">
                 <CustomInput 
                     type="text"
-                    name="subUserName"
+                    name="name"
                     placeholder={placeholderName}
-                    value={input.subUserName}
+                    value={name}
                     required
                     onChange={(event) => handleChange(event, index)}
                 />
@@ -46,7 +42,7 @@ const SubUserInputRowItem = ({ index, mainUserType }) => {
                         <CustomInput
                             type="date"
                             name="dob"
-                            value={input.subUserDob}
+                            value={dob}
                             required
                             onChange={handleChange}
                         />
@@ -57,9 +53,9 @@ const SubUserInputRowItem = ({ index, mainUserType }) => {
             <div className="col-lg-4 mb-1 text-input">
                 <CustomInput 
                     type="text"
-                    name="subUserSchoolName"
+                    name="school_name"
                     placeholder="School Name"
-                    value={input.subUserSchoolName}
+                    value={schoolName}
                     required
                     onChange={handleChange}
                 />
@@ -68,9 +64,9 @@ const SubUserInputRowItem = ({ index, mainUserType }) => {
             <div className="col-lg-4 mb-1 text-input pr-3">
                 <CustomInput 
                     type="password"
-                    name="subUserPassword"
+                    name="password"
                     placeholder="Password"
-                    value={input.subUserPassword}
+                    value={password}
                     required
                     onChange={handleChange}
                 />
@@ -79,9 +75,9 @@ const SubUserInputRowItem = ({ index, mainUserType }) => {
             <div className="col-lg-4 mb-1 text-input pr-3">
                 <CustomInput 
                     type="password"
-                    name="subUserConfirmPassword"
+                    name="confirm_password"
                     placeholder="Confirm Password"
-                    value={input.subUserConfirmPassword}
+                    value={confirmPassword}
                     required
                     onChange={handleChange}
                 />
@@ -90,9 +86,9 @@ const SubUserInputRowItem = ({ index, mainUserType }) => {
             <div className="col-lg-4 mb-1 text-input">
                 <CustomInput 
                     type="email"
-                    name="subUserEmail"
+                    name="email"
                     placeholder="Email Address"
-                    value={input.subUserEmail}
+                    value={email}
                     required
                     onChange={handleChange}
                 />

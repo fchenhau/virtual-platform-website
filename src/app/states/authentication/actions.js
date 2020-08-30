@@ -14,6 +14,14 @@ export const setPassword = (password) => ({
     }
 });
 
+
+export const setSubUser = (index, data) => ({
+    type: types.SET_SUBUSER,
+    payload: {
+        index, data
+    }
+});
+
 export const addSubUsersCount = () => ({
     type: types.ADD_SUBUSERS_COUNT,
 });
