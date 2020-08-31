@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import SpeakersTitleImg from "../../../assets/images/Speakers/MDM2020_07_04_SPEAKERS_19.png"
-import "../../../styles/speakers.css"
+import "../../../styles/speakers.scss"
 import SpeakerItem from "../../components/speakers/SpeakerItem"
 import Events from "../../../apis/events"
 
@@ -54,7 +54,7 @@ const Speakers = () => {
                 </div>
             </div>
             
-            <div className="speakers-btm-title">
+            <div className="speakers-title">
                 <img src={SpeakersTitleImg} alt="Speakers" 
                     className="img img-fluid" />
             </div>

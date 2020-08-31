@@ -8,9 +8,9 @@ const SpeakerItem = ({ thumbnail, name, title, description }) => {
                 <img src={thumbnail} alt={name} 
                     className="img img-fluid speaker-thumbnail" />
 
-                <strong className="text-center text-white">{name}</strong>
-                <span className="text-center text-white">{title}</span>
-                <span className="text-center text-muted">{description}</span>
+                <strong className="text-center text-white text-default">{name}</strong>
+                <span className="text-center text-white text-default text-description">{title}</span>
+                <span className="text-center text-muted text-default text-description">{description}</span>
             </div>
         </div>
     )
