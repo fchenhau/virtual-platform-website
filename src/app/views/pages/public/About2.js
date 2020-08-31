@@ -1,5 +1,5 @@
 import React from 'react'
-import WhoIsThisForImg from "../../../assets/images/about_2.png"
+import WhoIsThisForImg from "../../../assets/images/About/about_2.png"
 import "../../../styles/about2.css"
 
 const About2 = () => {
