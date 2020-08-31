@@ -292,8 +292,9 @@ const RegisterContainer = ({ history }) => {
                             onChange={handleChange}
                             required>
                             <option value="">Select Gender</option>
-                            <option value={0}>Male</option>
-                            <option value={1}>Female</option>
+                            <option value={0}>Prefer Not To Tell</option>
+                            <option value={1}>Male</option>
+                            <option value={2}>Female</option>
                         </select>
                     </div>
                 </div>
