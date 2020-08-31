@@ -9,7 +9,7 @@ const About1 = () => {
         <div id="about_page_1">
 
             {/* Desktop View */}
-            <div className="d-md-block d-none">
+            <div className="d-md-block d-none d-flex align-items-center h-100">
                 <div className="about-page-1-text">
                     <h1 className="text-header">RAISING DIGITAL HEROES</h1>
                     <p className="text-default">

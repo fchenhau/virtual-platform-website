@@ -19,9 +19,9 @@
 @media only screen and (max-width: 600px) {
     #about_page_1 {
         .about-page-1-text {
+            width: 100vw;
             top: 57vh;
             left: 0;
-            width: 100vw;
         }
 
         .text-default {
