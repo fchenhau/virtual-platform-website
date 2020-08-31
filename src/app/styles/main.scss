@@ -1,0 +1,77 @@
+.main-page {
+    background-color: #000000;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+
+    .logo {
+        position: absolute;
+        left: 30%;
+        top: 35%;
+        width: 160px;
+        height: auto;
+    }
+
+    .logo-text {
+        position: absolute;
+        left: 41%;
+        top: 42%;
+
+        .title {
+            font-size: 2rem;
+        }
+
+        .borderline {
+            border-top: 2px solid #ffffff;
+            width: 100%;
+        }
+
+        .subtitle {
+            letter-spacing: 0.5rem;
+            font-size: 0.7rem;
+        }
+    }
+
+    .stats {
+        position: absolute;
+        bottom: 6%;
+        width: 100%;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .main-page {
+        .logo {
+            left: 30%;
+            top: 15%;
+        }
+
+        .logo-text {
+            text-align: center;
+            margin: 0 auto;
+            left: 0;
+            top: 45%;
+
+            .title {
+                font-size: 1rem;
+            }
+
+            .borderline {
+                float: right;
+                border-top: 2px solid #ffffff;
+                width: 90%;
+            }
+    
+            .subtitle {
+                font-size: 0.5rem;
+            }
+        }
+
+        .stats {
+            top: 60%;
+            font-size: 0.5rem;
+            float: right;
+        }
+    }
+}

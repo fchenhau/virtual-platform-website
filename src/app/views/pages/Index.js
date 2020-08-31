@@ -51,9 +51,6 @@ const Index = ({ history }) => {
 
     const scrollTo = (page) => {
         refParallax.current.scrollTo(pagesOffset[page]);
-
-        // let newOffset = scrollOffset[page];
-        // setCurrOffset(newOffset);
     }
 
     useEffect(() => {

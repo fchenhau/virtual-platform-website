@@ -16,11 +16,29 @@
         cursor: pointer;
 
         .nav_menu_item_active {
-            width: 210px;
+            width: 208px;
         }
 
         .nav_menu_item {
             width: 48px;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #burger_menu {
+        .menu {
+            width: 24px;
+        }
+
+        ul > li {
+            .nav_menu_item_active {
+                width: 112px;
+            }
+
+            .nav_menu_item {
+                width: 24px;
+            }
         }
     }
 }
