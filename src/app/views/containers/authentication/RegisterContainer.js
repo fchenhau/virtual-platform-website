@@ -37,7 +37,7 @@ const RegisterContainer = ({ history }) => {
         password: "",
         confirmPassword: "",
         dob: "",
-        gender: "",
+        gender: 0,
         userType: "individual",
         organization: "",
         isAgreeToTnc: false,
@@ -291,8 +291,7 @@ const RegisterContainer = ({ history }) => {
                             defaultValue={formInput.gender}
                             onChange={handleChange}
                             required>
-                            <option value="">Select Gender</option>
-                            <option value={0}>Prefer Not To Tell</option>
+                            <option value={0}>Not Specified</option>
                             <option value={1}>Male</option>
                             <option value={2}>Female</option>
                         </select>
