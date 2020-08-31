@@ -1,0 +1,22 @@
+
+#burger_menu {
+    position: fixed;
+    top: 3vh;
+    right: 3vw;
+    text-align: right;
+    z-index: 99;
+
+    .menu {
+        width: 3vw;
+        cursor: pointer;
+    }
+
+    ul > li {
+        list-style: none;
+
+        .nav_menu_item {
+            width: 12.5vw;
+            cursor: pointer;
+        }
+    }
+}
