@@ -1,0 +1,36 @@
+#highlights {
+    background-color: #ffffff;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+
+    .highlight-btm-bar {
+        position: absolute;
+        bottom: 0;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    #highlights {
+        height: 400vh;
+
+        #highlights_content {
+            .text-header {
+                font-size: 1.5rem;
+            }
+
+            .text-default {
+                font-size: 0.9rem;
+            }
+        }
+
+        #highlight-btm-bar-mobile {
+            background-color: #000000;
+
+            .text-default {
+                letter-spacing: 0.5rem;
+            }
+        }
+    }
+}

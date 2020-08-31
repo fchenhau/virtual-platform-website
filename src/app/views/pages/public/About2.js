@@ -7,7 +7,7 @@ const About2 = () => {
 
     return (
         <div id="about_page_2">
-
+            {/* Desktop View */}
             <div className="d-md-block d-none">
                 <div className="d-flex align-items-center h-100">
                     <img src={WhoIsThisForImg} alt="Who Is This For" 
@@ -15,6 +15,7 @@ const About2 = () => {
                 </div>
             </div>
             
+            {/* Mobile View */}
             <div className="d-block d-md-none h-100">
                 <div className="d-flex flex-column pt-5">
                     <img src={WhoIsThisForMobileImg} alt="Who Is This For" 
