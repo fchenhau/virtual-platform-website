@@ -7,16 +7,20 @@
     z-index: 99;
 
     .menu {
-        width: 3vw;
+        width: 48px;
         cursor: pointer;
     }
 
     ul > li {
         list-style: none;
+        cursor: pointer;
+
+        .nav_menu_item_active {
+            width: 210px;
+        }
 
         .nav_menu_item {
-            width: 12.5vw;
-            cursor: pointer;
+            width: 48px;
         }
     }
 }
