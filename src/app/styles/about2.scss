@@ -1,0 +1,14 @@
+#about_page_2 {
+    background-color: #000000;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+@media only screen and (max-width: 600px) {
+    #about_page_2 {
+        .text-default {
+            font-size: 0.7rem;
+        }
+    }
+}
