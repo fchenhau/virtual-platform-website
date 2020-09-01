@@ -28,16 +28,16 @@ export const calculateXChecksum = (mainUser = {}, subUsers = []) => {
     }
 
     // Get the required date
-    const currentUtcDate = moment().format('yyyy-mm-dd');
-    const currentUtcTime = moment().format('hh:mm:ss');
-
+    const currentUtcDate = moment.utc().format('YYYY-MM-DD');
+    const currentUtcTime = moment.utc().format('HH:mm:ss');
+    
     // Concatenate string 
     let concatString = password + '|' + email + '|' + currentUtcDate + '|' + currentUtcTime;
-
+    
     if (subUsers.length > 0) {
         concatString = concatString + '|' + concatSubUserEmails;
     }
-    
+    console.log(concatString);
     const base64Encoded = new Buffer(concatString).toString('base64');
 
     return base64Encoded;
